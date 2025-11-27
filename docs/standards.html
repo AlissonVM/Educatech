@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestro Compromiso: Estándares ISO y ODS | EducaTech Inclusiva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/accessibility.css"> 
+</head>
+<body>
+    <aside id="accessibility-widget" role="complementary" aria-label="Opciones de Accesibilidad">
+        <button id="contrast-toggle" aria-label="Alternar Modo de Alto Contraste">Contraste 🌓</button>
+        <button id="font-toggle" aria-label="Aumentar Tamaño de Fuente">A+ 🔠</button>
+        <button id="reader-toggle" aria-label="Activar Lector de Pantalla (TTS)">Lector 🔊</button>
+    </aside>
+
+    <header role="banner">
+        <a href="../index.html" aria-label="Inicio EducaTech Inclusiva">
+            <img src="../assets/img/logo.png" alt="Logo EducaTech Inclusiva" class="logo">
+        </a>
+        <nav role="navigation" aria-label="Menú Principal">
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="standards.html" aria-current="page">Nuestro Compromiso (ISO/ODS)</a></li> 
+                <li id="nav-dashboard-link"><a href="../pages/login-student-classic.html">Mi Dashboard Alumno</a></li>
+                <li id="nav-login-link"><a href="../pages/login.html">Acceso Adaptado</a></li>
+                <li><a href="../pages/forums.html">Foro de Discusión</a></li>
+                <li id="nav-logout-link" style="display:none;"><a href="#" id="logout-button">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main role="main">
+        <section class="hero-section hero-class" aria-labelledby="commitment-title">
+            <h2 id="commitment-title">Nuestra Estrategia de Responsabilidad Social Empresarial (RSE)</h2>
+            <p>La confiabilidad de EducaTech se basa en el cumplimiento de estándares internacionales que garantizan la calidad, la inclusión y la sostenibilidad.</p>
+        </section>
+
+        <section class="section-container standard-hub">
+            
+            <div class="tabs-container" role="tablist">
+                <button class="tab-button active" role="tab" aria-selected="true" aria-controls="panel-iso">Normas ISO</button>
+                <button class="tab-button" role="tab" aria-selected="false" aria-controls="panel-gri">Estándares GRI</button>
+                <button class="tab-button" role="tab" aria-selected="false" aria-controls="panel-ods">ODS (Objetivos ONU)</button>
+            </div>
+
+            <div id="panel-iso" class="tab-panel active" role="tabpanel" tabindex="0">
+                <h3 class="subsection-title">Pilares de Calidad y Gestión (ISO)</h3>
+                <div class="standard-grid">
+                    <div class="standard-card iso-card-9001">
+                        <h4>ISO 9001: Gestión de Calidad</h4>
+                        <p><strong>Enfoque EducaTech:</strong> Calidad de la Enseñanza. Aseguramos que los servicios cumplan consistentemente con los requisitos de calidad y las expectativas de los usuarios. Nuestro servicio educativo es fiable y accesible.</p>
+                    </div>
+                    <div class="standard-card iso-card-14001">
+                        <h4>ISO 14001: Gestión Ambiental</h4>
+                        <p><strong>Enfoque EducaTech:</strong> Sostenibilidad y Digitalización. Orientamos nuestra plataforma a reducir el impacto ambiental a través del reemplazo de material impreso por recursos digitales.</p>
+                    </div>
+                    <div class="standard-card iso-card-45001">
+                        <h4>ISO 45001: Seguridad y Salud Digital</h4>
+                        <p><strong>Enfoque EducaTech:</strong> Bienestar del Colaborador. Garantizamos condiciones seguras en el entorno virtual mediante protocolos de ergonomía digital y prevención de estrés tecnológico.</p>
+                    </div>
+                    <div class="standard-card iso-card-26000">
+                        <h4>ISO 26000: Responsabilidad Social</h4>
+                        <p><strong>Enfoque EducaTech:</strong> Inclusión y Ética. Esta norma establece cómo las organizaciones deben comportarse de una manera socialmente responsable.</p>
+                        <p>Guía la integración de la inclusión, la sostenibilidad y la ética en todos nuestros procesos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="panel-gri" class="tab-panel" role="tabpanel" tabindex="0" hidden>
+                <h3 class="subsection-title">Reporte y Transparencia (GRI)</h3>
+                <div class="standard-list">
+                    <div class="ods-item">
+                        <h4>GRI 102: Contenidos Generales</h4>
+                        <p><strong>Compromiso:</strong> Transparencia. Reportamos la participación de personal con discapacidad en nuestros programas.</p>
+                    </div>
+                    <div class="ods-item">
+                        <h4>GRI 300: Estándares Ambientales</h4>
+                        <p><strong>Compromiso:</strong> Sostenibilidad. Reportamos la reducción del consumo de papel y energía, alineados a la digitalización de nuestros materiales.</p>
+                    </div>
+                    <div class="ods-item">
+                        <h4>GRI 400: Estándares Sociales</h4>
+                        <p><strong>Compromiso:</strong> Inclusión. Reportamos el número de docentes capacitados en accesibilidad digital y formación inclusiva.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="panel-ods" class="tab-panel" role="tabpanel" tabindex="0" hidden>
+                <h3 class="subsection-title">Alineación con Metas Globales (ODS)</h3>
+                <div class="ods-list">
+                    <div class="ods-item">
+                        <span class="ods-number">ODS 4:</span> Educación de Calidad 
+                        <p><strong>Relación:</strong> Buscamos garantizar el acceso para todos los estudiantes sin restricción alguna, asegurando la educación inclusiva y equitativa.</p>
+                    </div>
+                    
+                    <div class="ods-item">
+                        <span class="ods-number">ODS 9:</span> Industria, Innovación e Infraestructura
+                        <p><strong>Relación:</strong> Sacamos provecho a las tecnologías para mejorar la educación, invirtiendo en infraestructura tecnológica accesible y sostenible.</p>
+                    </div>
+                    
+                    <div class="ods-item">
+                        <span class="ods-number">ODS 10:</span> Reducción de las Desigualdades
+                        <p><strong>Relación:</strong> Promovemos las oportunidades necesarias para aquellas personas con alguna discapacidad, abordando la desigualdad en el acceso a la educación.</p>
+                    </div>
+
+                    <div class="ods-item">
+                        <span class="ods-number">ODS 17:</span> Alianzas para lograr los Objetivos
+                        <p><strong>Relación:</strong> La implementación depende del trabajo en equipo entre el gobierno, sector privado y la sociedad. Buscamos alianzas estratégicas para extender el impacto.</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer role="contentinfo">
+        <p>© 2025 EducaTech Inclusiva S.A.C. | Centro de Estándares.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.tab-button');
+            const panels = document.querySelectorAll('.tab-panel');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => {
+                        t.classList.remove('active');
+                        t.setAttribute('aria-selected', 'false');
+                    });
+                    panels.forEach(p => {
+                        p.classList.remove('active');
+                        p.setAttribute('hidden', 'true');
+                    });
+
+                    const targetPanelId = tab.getAttribute('aria-controls');
+                    const targetPanel = document.getElementById(targetPanelId);
+
+                    tab.classList.add('active');
+                    tab.setAttribute('aria-selected', 'true');
+                    targetPanel.classList.add('active');
+                    targetPanel.removeAttribute('hidden');
+                    targetPanel.focus(); 
+                });
+            });
+        });
+    </script>
+    <script src="../assets/js/script.js"></script>
+</body>
+</html>
