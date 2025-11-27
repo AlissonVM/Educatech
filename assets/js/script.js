@@ -1,6 +1,6 @@
 /**
  * Lógica de Accesibilidad y Persistencia de Sesión
- * Controla la activación condicional de la accesibilidad y la redirección.
+ * Controla la activación condicional de la accesibilidad, el lector expandido, y la redirección.
  */
 (function() {
     const root = document.documentElement;
@@ -11,7 +11,7 @@
     
     // Configuración Inicial y Persistencia
     let currentFontSize = 100; // Almacenado como porcentaje
-    let ttsActive = false;
+    let ttsActive = false; 
     
     // Elementos de menú
     const userProfile = localStorage.getItem('userProfile');
@@ -34,27 +34,33 @@
         window.speechSynthesis.speak(speech);
     }
 
+    // ARREGLO CRÍTICO: Lector de Pantalla Expandido
     function setupTTSListeners() {
         const interactives = document.querySelectorAll('a:not(.disabled), button:not(.disabled), [role="button"], input[type="submit"]');
+        // Elementos de Contenido principales a narrar (h1, h2, p, etc.)
+        const contentElements = document.querySelectorAll('h1, h2, h3, p:not(.thread-meta), .hero-subtitle, .need-card h4, .need-card p, .standard-card h4, .ods-item');
 
+        // Narración de elementos interactivos (al hacer foco)
         interactives.forEach(element => {
             element.addEventListener('focus', function() {
                 let textToSpeak = element.getAttribute('aria-label') || element.textContent;
-                
-                const describedById = element.getAttribute('aria-describedby');
-                if (describedById) {
-                    const describedByElement = document.getElementById(describedById);
-                    if (describedByElement) {
-                        textToSpeak += `. Información adicional: ${describedByElement.textContent}`;
-                    }
-                }
-
                 speakText(textToSpeak.trim());
             });
             element.addEventListener('blur', function() {
-                if (window.speechSynthesis.speaking) {
-                    window.speechSynthesis.cancel();
+                if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
+            });
+        });
+        
+        // Narración de contenido (al pasar el ratón - simulación)
+        contentElements.forEach(element => {
+             element.addEventListener('mouseenter', function() {
+                // Solo leer si el modo TTS está activo
+                if (ttsActive) {
+                     speakText(element.textContent.trim());
                 }
+            });
+             element.addEventListener('mouseleave', function() {
+                if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
             });
         });
     }
@@ -76,7 +82,7 @@
             setupTTSListeners();
         }
         
-        // --- Lógica de Bienvenida en Dashboard ---
+        // Lógica de Bienvenida en Dashboard
         const welcomeMessage = document.getElementById('welcome-banner');
         if (welcomeMessage && localStorage.getItem('showWelcome') === 'true') {
             setTimeout(() => {
@@ -88,8 +94,7 @@
     }
 
 
-    // --- 2. Escuchadores de Eventos del Widget ---
-    
+    // --- 2. Eventos del Widget ---
     if (contrastToggle) {
         contrastToggle.addEventListener('click', () => {
             body.classList.toggle('high-contrast');
@@ -139,14 +144,14 @@
             localStorage.setItem('fontSize', 100);
             localStorage.setItem('ttsActive', 'false');
             localStorage.removeItem('showWelcome');
-            // Redirigir al inicio 
+            // Redirigir al inicio (calcula la ruta relativa)
             const path = window.location.pathname;
-            const target = path.includes('/pages/') || path.includes('/docs/') || path.includes('/classes/') ? '../index.html' : 'index.html';
+            const target = (path.includes('/pages/') || path.includes('/docs/') || path.includes('/classes/')) ? '../index.html' : 'index.html';
             window.location.href = target; 
         });
     }
 
-    // Lógica del menú dinámico (omitiendo por brevedad, se mantiene el código anterior)
+    // Menú dinámico: Carga la configuración del menú al iniciar
     if (userProfile) {
         if (loginLinkLi) loginLinkLi.style.display = 'none';
         if (logoutLinkLi) logoutLinkLi.style.display = 'list-item';
@@ -158,6 +163,7 @@
             const aTag = dashboardLinkLi.querySelector('a');
             if(aTag) { 
                 aTag.textContent = dashboardText;
+                
                 const path = window.location.pathname;
                 const prefix = (path.includes('/pages/') || path.includes('/docs/')) ? '' : 'pages/';
                 aTag.href = prefix + dashboardFile;
@@ -174,14 +180,12 @@
             button.addEventListener('click', () => {
                 const profile = button.getAttribute('data-profile');
                 
-                // RESTABLECER PRIMERO
+                // Restablecer primero
                 localStorage.setItem('contrastMode', 'inactive');
                 localStorage.setItem('fontSize', 100);
                 localStorage.setItem('ttsActive', 'false');
-                root.style.fontSize = '100%';
-                body.classList.remove('high-contrast');
                 
-                // ACTIVACIÓN CONDICIONAL DE SIMULACIÓN VISUAL
+                // ACTIVACIÓN CONDICIONAL
                 if (profile === "student-visual") {
                     localStorage.setItem('contrastMode', 'active');
                     localStorage.setItem('fontSize', 120);
