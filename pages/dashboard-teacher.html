@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Docente | EducaTech Inclusiva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/accessibility.css"> 
+</head>
+<body>
+    <aside id="accessibility-widget" role="complementary" aria-label="Opciones de Accesibilidad">
+        <button id="contrast-toggle" aria-label="Alternar Modo de Alto Contraste">Contraste 🌓</button>
+        <button id="font-toggle" aria-label="Aumentar Tamaño de Fuente">A+ 🔠</button>
+        <button id="reader-toggle" aria-label="Activar Lector de Pantalla (TTS)">Lector 🔊</button>
+    </aside>
+
+    <header role="banner">
+        <a href="../index.html" aria-label="Inicio EducaTech Inclusiva">
+            <img src="../assets/img/logo.png" alt="Logo EducaTech Inclusiva" class="logo">
+        </a>
+        <nav role="navigation" aria-label="Menú Principal">
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../docs/standards.html">Nuestro Compromiso (ISO/ODS)</a></li> 
+                <li id="nav-dashboard-link"><a href="dashboard-teacher.html" aria-current="page">Mi Dashboard Docente</a></li>
+                <li id="nav-login-link" style="display:none;"><a href="login.html">Acceso Adaptado</a></li>
+                <li><a href="forums.html">Foro de Discusión</a></li>
+                <li id="nav-logout-link"><a href="#" id="logout-button">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main role="main">
+        <section class="hero-section hero-dashboard" aria-labelledby="dashboard-heading">
+            <div id="welcome-banner" class="welcome-banner">
+                ¡Bienvenido/a, Docente Admin! Su portal de capacitación e indicadores de RSE.
+            </div>
+            <h1 id="dashboard-heading">Panel de Control Docente</h1>
+            <p>Aquí puede gestionar los cursos de capacitación en inclusión y sostenibilidad, y monitorear el progreso de sus alumnos.</p>
+        </section>
+
+        <section class="section-container" aria-labelledby="teacher-actions-heading">
+            <h2 id="teacher-actions-heading" class="section-heading">Acciones Rápidas</h2>
+            <div class="link-grid">
+                <div class="card-link" role="article">
+                    <h3>Gestión de Alumnos</h3>
+                    <p>Ver estadísticas de accesibilidad y progreso.</p>
+                </div>
+                <div class="card-link" role="article">
+                    <h3>Subir Material Adaptado</h3>
+                    <p>Herramientas para revisar y publicar contenido WCAG.</p>
+                </div>
+                <div class="card-link" role="article">
+                    <h3>Módulo de Capacitación RSE</h3>
+                    <p>Su curso obligatorio sobre ISO 14001 y ODS.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section-container" aria-labelledby="teacher-courses-heading">
+            <h2 id="teacher-courses-heading" class="section-heading">Mis Capacitaciones</h2>
+            <div class="course-list">
+                <div class="course-card" role="article">
+                    <h4>Capacitación: ISO 14001 y Reciclaje</h4>
+                    <p>Módulo obligatorio de RSE. Estado: **90% Completo**.</p>
+                    <a href="../classes/class-module-1-teacher.html" class="button-primary button-accent">Continuar</a>
+                </div>
+                <div class="course-card course-pending" role="article">
+                    <h4>Webinar: Inclusión Digital y Trastornos Cognitivos</h4>
+                    <p>Alineación de currículo con estándares de accesibilidad.</p>
+                    <a href="#" class="button-primary button-secondary disabled" aria-disabled="true">Próximamente</a>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer role="contentinfo">
+        <p>© 2025 EducaTech Inclusiva S.A.C. | Portal Docente.</p>
+    </footer>
+
+    <script src="../assets/js/script.js"></script>
+</body>
+</html>
