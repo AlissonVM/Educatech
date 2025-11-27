@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación Final | EducaTech Inclusiva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/accessibility.css"> 
+</head>
+<body>
+    <aside id="accessibility-widget" role="complementary" aria-label="Opciones de Accesibilidad">
+        <button id="contrast-toggle" aria-label="Alternar Modo de Alto Contraste">Contraste 🌓</button>
+        <button id="font-toggle" aria-label="Aumentar Tamaño de Fuente">A+ 🔠</button>
+        <button id="reader-toggle" aria-label="Activar Lector de Pantalla (TTS)">Lector 🔊</button>
+    </aside>
+
+    <header role="banner">
+        <a href="../index.html" aria-label="Inicio EducaTech Inclusiva">
+            <img src="../assets/img/logo.png" alt="Logo EducaTech Inclusiva" class="logo">
+        </a>
+        <nav role="navigation" aria-label="Menú Principal">
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../docs/standards.html">Nuestro Compromiso (ISO/ODS)</a></li> 
+                <li id="nav-dashboard-link"><a href="dashboard.html">Mi Dashboard Alumno</a></li>
+                <li id="nav-login-link" style="display:none;"><a href="login.html">Acceso Adaptado</a></li>
+                <li><a href="forums.html">Foro de Discusión</a></li>
+                <li id="nav-logout-link"><a href="#" id="logout-button">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main role="main">
+        <section class="hero-section hero-class" aria-labelledby="eval-heading">
+            <h1 id="eval-heading">Evaluación de Módulo: Economía Circular</h1>
+            <p>Por favor, responda las siguientes 5 preguntas. Recuerde que su configuración de accesibilidad se mantiene activa.</p>
+        </section>
+
+        <section class="section-container learning-resource" aria-labelledby="questions-heading">
+            <h2 id="questions-heading">Preguntas de Opción Múltiple (Simulación)</h2>
+            
+            <form class="evaluation-form">
+                <div class="question-block">
+                    <h4>1. ¿Cuál es el principal objetivo de la Economía Circular?</h4>
+                    <label><input type="radio" name="q1" value="a"> A. Maximizar la producción de bienes desechables.</label><br>
+                    <label><input type="radio" name="q1" value="b"> B. Mantener los productos, componentes y materiales en su mayor utilidad y valor en todo momento.</label><br>
+                    <label><input type="radio" name="q1" value="c"> C. Reducir el consumo de energía en el transporte.</label><br>
+                </div>
+                
+                <div class="question-block">
+                    <h4>2. ¿Qué norma ISO es la base de la gestión ambiental de EducaTech?</h4>
+                    <label><input type="radio" name="q2" value="a"> A. ISO 9001</label><br>
+                    <label><input type="radio" name="q2" value="b"> B. ISO 14001</label><br>
+                    <label><input type="radio" name="q2" value="c"> C. ISO 45001</label><br>
+                </div>
+
+                <button type="submit" class="button-primary button-accent" style="margin-top: 30px;">Finalizar y Enviar Evaluación</button>
+            </form>
+        </section>
+
+        <a href="dashboard.html" class="button-primary button-secondary">Volver al Dashboard</a>
+    </main>
+
+    <footer role="contentinfo">
+        <p>© 2025 EducaTech Inclusiva S.A.C. | Evaluación Adaptada.</p>
+    </footer>
+
+    <script src="../assets/js/script.js"></script>
+</body>
+</html>
