@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso Alumno | EducaTech Inclusiva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/accessibility.css"> 
+</head>
+<body>
+    <aside id="accessibility-widget" role="complementary" aria-label="Opciones de Accesibilidad">
+        <button id="contrast-toggle" aria-label="Alternar Modo de Alto Contraste">Contraste 🌓</button>
+        <button id="font-toggle" aria-label="Aumentar Tamaño de Fuente">A+ 🔠</button>
+        <button id="reader-toggle" aria-label="Activar Lector de Pantalla (TTS)">Lector 🔊</button>
+    </aside>
+
+    <header role="banner">
+        <a href="../index.html" aria-label="Inicio EducaTech Inclusiva">
+            <img src="../assets/img/logo.png" alt="Logo EducaTech Inclusiva" class="logo">
+        </a>
+        <nav role="navigation" aria-label="Menú Principal">
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../docs/standards.html">Nuestro Compromiso (ISO/ODS)</a></li> 
+                <li id="nav-dashboard-link"><a href="login-student-classic.html" aria-current="page">Mi Dashboard Alumno</a></li>
+                <li id="nav-login-link"><a href="login.html">Acceso Adaptado</a></li>
+                <li><a href="forums.html">Foro de Discusión</a></li>
+                <li id="nav-logout-link" style="display:none;"><a href="#" id="logout-button">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main role="main">
+        <section class="hero-section hero-login" aria-labelledby="login-heading">
+            <h2 id="login-heading">Acceso al Dashboard de Alumnos</h2>
+            <p>Ingresa tus credenciales para acceder a tus cursos y progreso.</p>
+        </section>
+
+        <form class="simple-login-form" id="student-login-form">
+            <label for="username-student">Usuario:</label>
+            <input type="text" id="username-student" name="username-student" placeholder="ej. alumno123" required>
+            
+            <label for="password-student">Contraseña:</label>
+            <input type="password" id="password-student" name="password-student" placeholder="******" required>
+            
+            <div class="login-button">
+                <button type="submit" class="button-primary">Ingresar al Dashboard</button>
+            </div>
+            
+            <p class="login-link-adaptado">¿Necesitas adaptaciones especiales? <a href="login.html">Usa el Acceso Adaptado.</a></p>
+        </form>
+    </main>
+
+    <footer role="contentinfo">
+        <p>© 2025 EducaTech Inclusiva S.A.C. | Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('student-login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            localStorage.setItem('userProfile', 'student'); 
+            localStorage.setItem('showWelcome', 'true');
+            // Redirección Final: Al mismo directorio /pages/
+            window.location.href = 'dashboard.html'; 
+        });
+    </script>
+    <script src="../assets/js/script.js"></script>
+</body>
+</html>
