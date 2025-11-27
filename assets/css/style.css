@@ -57,7 +57,7 @@ a:focus, button:focus, .card-link:focus, input:focus, .tab-button:focus {
     white-space: nowrap;
     border-width: 0;
 }
-/* Widget de Accesibilidad (Mismo) */
+/* Widget de Accesibilidad */
 #accessibility-widget {
     position: fixed;
     top: 50%;
@@ -307,7 +307,6 @@ main {
     font-size: 0.9em;
     margin-top: 10px;
 }
-/* Estilos de Dashboard */
 .welcome-banner {
     background-color: var(--accent-color);
     color: white;
@@ -321,7 +320,7 @@ main {
 .welcome-banner.active {
     opacity: 1;
 }
-/* Nueva tarjeta de Bienestar */
+/* Estilos de Dashboard */
 .bienestar-card {
     background: linear-gradient(135deg, #f0f4ff, #e3e9ff);
     padding: 25px;
@@ -336,20 +335,30 @@ main {
     font-weight: 700;
     margin-top: 0;
 }
-.bienestar-card p {
-    font-size: 0.95em;
-    color: #555;
+.course-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
 }
-.bienestar-card a {
-    color: var(--accent-color);
-    text-decoration: none;
-    font-weight: 600;
+.course-card {
+    padding: 25px;
+    background: var(--light-bg-color);
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius-base);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
-.bienestar-card a:hover {
-    text-decoration: underline;
+.course-card h4 {
+    color: var(--secondary-color);
+    margin-top: 0;
+}
+.course-card.course-pending {
+    opacity: 0.7;
+    border: 2px dashed #aaa;
+    position: relative;
 }
 
-/* Estilos de Aulas */
+/* Estilos de Aulas y Transcripción */
 .learning-resource {
     background: var(--light-bg-color);
     padding: 30px;
@@ -426,16 +435,6 @@ main {
 .thread-info {
     flex-grow: 1;
 }
-.thread-info h4 a {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-size: 1.1em;
-    transition: color 0.2s;
-}
-.thread-info h4 a:hover {
-    color: var(--secondary-color);
-    text-decoration: underline;
-}
 .thread-stats {
     display: flex;
     gap: 25px;
@@ -446,7 +445,13 @@ main {
 .thread-stats .stat-count {
     color: var(--accent-color);
 }
-/* Estilos de Estándares */
+
+/* ESTILOS DE ESTÁNDARES (docs/standards.html) */
+.standard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
 .standard-card {
     background: var(--light-bg-color);
     padding: 25px;
@@ -459,7 +464,6 @@ main {
     transform: translateY(-5px);
     box-shadow: var(--shadow-hover);
 }
-/* Estilo para GRI/ODS - Diseño de Tarjetas Final */
 .standard-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -471,6 +475,7 @@ main {
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); 
     border-left: 5px solid var(--primary-color);
+    transition: transform 0.2s;
 }
 
 /* Footer y Media Queries (Mismos) */
@@ -484,4 +489,10 @@ footer {
 }
 @media (max-width: 768px) {
     /* ... (Media queries existentes) ... */
+    .access-grid-small {
+        flex-direction: column;
+    }
+    .standard-list {
+        grid-template-columns: 1fr;
+    }
 }
