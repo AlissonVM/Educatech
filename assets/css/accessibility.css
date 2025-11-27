@@ -1,0 +1,91 @@
+/* ================================================= */
+/* Estilos Exclusivos para el Modo de Alto Contraste */
+/* (WCAG AAA - Amarillo/Blanco/Cian sobre Negro) */
+/* ================================================= */
+
+body.high-contrast {
+    /* Base: Negro puro y blanco brillante */
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
+}
+
+body.high-contrast header, 
+body.high-contrast .hero-section,
+body.high-contrast .card-link,
+body.high-contrast .simple-login-form,
+body.high-contrast .forum-container,
+body.high-contrast .standard-card,
+body.high-contrast .ods-item {
+    background-color: #111111 !important; /* Fondo gris oscuro, no negro puro, para distinguir elementos */
+    border-color: #FFFF00 !important; /* Borde amarillo brillante */
+    color: #FFFFFF !important;
+}
+
+body.high-contrast h1,
+body.high-contrast h2,
+body.high-contrast h3,
+body.high-contrast h4 {
+    color: #FFFF00 !important; /* Títulos en amarillo brillante */
+}
+
+/* Links and Navigation */
+body.high-contrast a:not(.button-primary),
+body.high-contrast nav a:hover,
+body.high-contrast nav a[aria-current="page"] {
+    color: #00FFFF !important; /* Enlaces en cian brillante */
+    border-color: #00FFFF !important;
+}
+
+/* Buttons and UI elements */
+body.high-contrast .button-primary {
+    background-color: #FFFF00 !important; /* Botones en amarillo */
+    color: #000000 !important; /* Texto del botón en negro */
+    font-weight: bold;
+}
+body.high-contrast .button-primary:hover {
+    background-color: #00FFFF !important; /* Hover en cian */
+    transform: none; /* Desactivar transiciones */
+}
+body.high-contrast .button-accent {
+    background-color: #FF00FF !important; /* Magenta para acento */
+    color: #000000 !important;
+}
+/* Progress Bar */
+body.high-contrast .progress-bar-container {
+    background-color: #333333 !important;
+}
+body.high-contrast .progress-bar-fill {
+    background-color: #FFFF00 !important;
+}
+
+/* Form Inputs */
+body.high-contrast input {
+    background-color: #333333 !important;
+    color: #FFFFFF !important;
+    border-color: #FFFF00 !important;
+}
+
+/* =================================================== */
+/* Estilos Exclusivos para el Modo Lector (Cognitivo) */
+/* =================================================== */
+
+body.reader-active {
+    font-family: sans-serif !important; 
+    line-height: 1.8;
+}
+
+/* Simulación de Pictogramas */
+body.reader-active .learning-resource p.resource-note::before,
+body.reader-active .learning-resource p::before {
+    content: "💡 ";
+    font-size: 1.2em;
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+body.reader-active .learning-resource h3::before {
+    content: "📘 ";
+    font-size: 1.2em;
+    margin-right: 8px;
+    font-weight: bold;
+}
