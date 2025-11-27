@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capacitación Docente | EducaTech Inclusiva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/accessibility.css"> 
+</head>
+<body>
+    <aside id="accessibility-widget" role="complementary" aria-label="Opciones de Accesibilidad">
+        <button id="contrast-toggle" aria-label="Alternar Modo de Alto Contraste">Contraste 🌓</button>
+        <button id="font-toggle" aria-label="Aumentar Tamaño de Fuente">A+ 🔠</button>
+        <button id="reader-toggle" aria-label="Activar Lector de Pantalla (TTS)">Lector 🔊</button>
+    </aside>
+
+    <header role="banner">
+        <a href="../index.html" aria-label="Inicio EducaTech Inclusiva">
+            <img src="../assets/img/logo.png" alt="Logo EducaTech Inclusiva" class="logo">
+        </a>
+        <nav role="navigation" aria-label="Menú Principal">
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../docs/standards.html">Nuestro Compromiso (ISO/ODS)</a></li> 
+                <li id="nav-dashboard-link"><a href="../pages/dashboard-teacher.html">Mi Dashboard Docente</a></li>
+                <li id="nav-login-link"><a href="../pages/login.html">Acceso Adaptado</a></li>
+                <li><a href="../pages/forums.html">Foro de Discusión</a></li>
+                <li id="nav-logout-link" style="display:none;"><a href="#" id="logout-button">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main role="main" id="class-main">
+        <section class="hero-section hero-class" aria-labelledby="class-details-heading">
+            <h2 id="class-details-heading">Capacitación Docente: ISO 14001 y el Reciclaje</h2>
+            <p id="class-details">Esta sesión cubre la importancia de los estándares de gestión ambiental y cómo integrarlos en un currículo inclusivo.</p>
+        </section>
+
+        <article class="learning-resource">
+            <h3>🎥 Video Capacitación: Guía de Implementación ISO 14001</h3>
+            
+            <figure class="video-container-horizontal">
+                <iframe 
+                    width="100%" 
+                    height="100%" 
+                    src="https://www.youtube.com/embed/woC2np0lDAE" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                    title="Video de capacitación sobre ISO 14001 para docentes">
+                </iframe>
+            </figure>
+            
+            <figcaption class="video-caption">Este video incluye audio-descripción detallada y subtítulos sincronizados, esenciales para la capacitación de todo el personal.</figcaption>
+            
+            <p class="resource-note">Recuerde que el entendimiento de la ISO 14001 permite alinear los objetivos del curso de Economía Circular con estándares globales.</p>
+            
+            <section class="transcript-section">
+                <h4>📜 Transcripción Completa (WCAG AA)</h4>
+                <p>La transcripción garantiza que el contenido de la capacitación sea completamente accesible y consultable.</p>
+                <div class="transcript-content">
+                    <p>**(00:00) Introducción Docente:** Bienvenidos a esta capacitación. La ISO 14001 es nuestra base para la gestión ambiental. Como docentes, debemos modelar estas prácticas.</p>
+                    <p>**(00:45) Directriz de Reciclaje:** La directriz clave para el reciclaje es la segregación en la fuente. Esto se aplica a todos los residuos generados en el aula y en casa.</p>
+                    <p>**(01:30) Aplicación Curricular:** Integra la ISO 14001 en tu enseñanza de Economía Circular, demostrando cómo la gestión de residuos es un sistema continuo. ¡Certifiquemos el conocimiento!</p>
+                </div>
+            </section>
+        </article>
+        
+        <section class="learning-resource">
+             <h3>📝 Material de Apoyo: Documentos y Guías (Descarga)</h3>
+             <p>Descarga la guía completa sobre los requisitos de la norma ISO 14001 y su aplicación en el currículo de sostenibilidad.</p>
+             <a href="#" class="button-primary button-accent">Descargar Material</a>
+        </section>
+
+        <a href="../pages/dashboard-teacher.html" class="button-primary button-secondary">Volver al Dashboard Docente</a>
+    </main>
+
+    <footer role="contentinfo">
+        <p>© 2025 EducaTech Inclusiva S.A.C. | Módulo de Capacitación.</p>
+    </footer>
+    <script src="../assets/js/script.js"></script>
+</body>
+</html>
