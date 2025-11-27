@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foros y Estándares | EducaTech Inclusiva</title>
+    <title>Foro de Discusión | EducaTech Inclusiva</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/accessibility.css"> 
@@ -22,114 +23,90 @@
         <nav role="navigation" aria-label="Menú Principal">
             <ul>
                 <li><a href="../index.html">Inicio</a></li>
-                <li><a href="../docs/standards.html">Nuestro Compromiso</a></li>
-                <li><a href="../pages/dashboard.html">Mi Dashboard Alumno</a></li>
-                <li><a href="../pages/login.html">Acceso Adaptado</a></li>
-                <li><a href="../pages/forums.html" aria-current="page">Foros y Estándares</a></li>
+                <li><a href="../docs/standards.html">Nuestro Compromiso (ISO/ODS)</a></li> 
+                <li id="nav-dashboard-link"><a href="login-student-classic.html">Mi Dashboard Alumno</a></li>
+                <li id="nav-login-link"><a href="login.html">Acceso Adaptado</a></li>
+                <li><a href="forums.html" aria-current="page">Foro de Discusión</a></li>
+                <li id="nav-logout-link" style="display:none;"><a href="#" id="logout-button">Cerrar Sesión</a></li>
             </ul>
         </nav>
     </header>
 
     <main role="main">
-        <section class="hero-section hero-class" aria-labelledby="forums-title">
-            <h2 id="forums-title">Estándares Globales de Sostenibilidad e Inclusión</h2>
-            <p>EducaTech se alinea con las principales normas ISO, GRI y los Objetivos de Desarrollo Sostenible (ODS) de la ONU para garantizar la educación de alto impacto.</p>
+        <section class="hero-section hero-forum" aria-labelledby="forum-title">
+            <h2 id="forum-title">💬 Foro de Comunidad: Inclusión y Economía Circular</h2>
+            <p>Un espacio para debatir, compartir ideas y resolver dudas sobre la aplicación de nuestros principios de sostenibilidad y accesibilidad.</p>
+            <a href="#" class="button-primary button-accent" role="button">Crear Nuevo Tema</a>
         </section>
 
-        <section class="section-container standard-hub">
+        <section class="section-container forum-container" aria-labelledby="forum-threads-heading">
+            <h3 id="forum-threads-heading">Temas de Discusión Activos</h3>
             
-            <div class="tabs-container" role="tablist">
-                <button class="tab-button active" role="tab" aria-selected="true" aria-controls="panel-iso">Normas ISO</button>
-                <button class="tab-button" role="tab" aria-selected="false" aria-controls="panel-gri">Estándares GRI</button>
-                <button class="tab-button" role="tab" aria-selected="false" aria-controls="panel-ods">ODS (Objetivos ONU)</button>
-            </div>
+            <div class="forum-thread-list">
+                
+                <article class="forum-thread-card" aria-labelledby="thread-1-title">
+                    <div class="thread-info">
+                        <h4 id="thread-1-title"><a href="#">¿Cómo influye la ISO 14001 en la segregación de residuos en casa?</a></h4>
+                        <p class="thread-meta">Iniciado por: Docente María | Última actividad: hace 2 horas</p>
+                        <p class="thread-summary">Debate sobre la aplicación práctica de los sistemas de gestión ambiental en la vida diaria de los estudiantes.</p>
+                    </div>
+                    <div class="thread-stats">
+                        <span class="stat-count">12</span> Respuestas
+                        <span class="stat-count">154</span> Vistas
+                    </div>
+                </article>
 
-            <div id="panel-iso" class="tab-panel active" role="tabpanel" tabindex="0">
-                <div class="standard-grid">
-                    <div class="standard-card">
-                        <h4>ISO 14001: Gestión Ambiental</h4>
-                        <p><strong>Enfoque EducaTech:</strong> Sostenibilidad y Economía Circular. Es el pilar de los cursos de nuestros alumnos.</p>
-                        <p>Asegura que el aprendizaje promueva la minimización del impacto ambiental, como se ve en el Módulo 1.</p>
+                <article class="forum-thread-card" aria-labelledby="thread-2-title">
+                    <div class="thread-info">
+                        <h4 id="thread-2-title"><a href="#">Experiencias usando el Lector de Pantalla con los módulos de video.</a></h4>
+                        <p class="thread-meta">Iniciado por: Alumno Luis | Última actividad: hace 45 minutos</p>
+                        <p class="thread-summary">Comentarios y sugerencias sobre la funcionalidad TTS y la audio-descripción de los videos.</p>
                     </div>
-                    <div class="standard-card">
-                        <h4>ISO 9001: Gestión de Calidad</h4>
-                        <p><strong>Enfoque EducaTech:</strong> Calidad de la Enseñanza. Asegura la coherencia, el rigor y la mejora continua del contenido educativo y de la plataforma.</p>
-                        <p>Nuestra plataforma sigue ciclos PDCA para optimizar las adaptaciones.</p>
+                    <div class="thread-stats">
+                        <span class="stat-count">25</span> Respuestas (¡Nuevo!)
+                        <span class="stat-count">310</span> Vistas
                     </div>
-                    <div class="standard-card">
-                        <h4>ISO 45001: Seguridad y Salud en el Trabajo</h4>
-                        <p><strong>Enfoque EducaTech:</strong> Entorno Digital Seguro. Aunque es digital, se aplica a la salud mental y la seguridad de los docentes en la creación de contenidos inclusivos.</p>
+                </article>
+                
+                <article class="forum-thread-card" aria-labelledby="thread-3-title">
+                    <div class="thread-info">
+                        <h4 id="thread-3-title"><a href="#">Propuestas para fortalecer el ODS 10 (Reducción de Desigualdades) en el campus.</a></h4>
+                        <p class="thread-meta">Iniciado por: Equipo RSE | Última actividad: ayer</p>
+                        <p class="thread-summary">Ideas para llevar la inclusión del aula virtual al campus físico y expandir el impacto del proyecto.</p>
                     </div>
-                    <div class="standard-card">
-                        <h4>ISO 26000: Responsabilidad Social</h4>
-                        <p><strong>Enfoque EducaTech:</strong> Inclusión y Ética. Esta norma guía nuestras decisiones sobre accesibilidad, asegurando que cubrimos las necesidades de la comunidad.</p>
+                    <div class="thread-stats">
+                        <span class="stat-count">8</span> Respuestas
+                        <span class="stat-count">98</span> Vistas
                     </div>
-                </div>
-            </div>
-
-            <div id="panel-gri" class="tab-panel" role="tabpanel" tabindex="0" hidden>
-                <div class="standard-list">
-                    <h4>GRI 102: Contenidos Generales</h4>
-                    <p><strong>Relevancia:</strong> Define cómo EducaTech se presenta y se comunica con sus stakeholders (alumnos, docentes, evaluadores), garantizando la transparencia de nuestro compromiso de inclusión.</p>
-                    
-                    <h4>GRI 300: Estándares Ambientales</h4>
-                    <p><strong>Relevancia:</strong> Se enfoca en el impacto de los contenidos de nuestros cursos (ISO 14001, Economía Circular), reportando cómo educamos en el uso eficiente de recursos y gestión de residuos.</p>
-
-                    <h4>GRI 400: Estándares Sociales</h4>
-                    <p><strong>Relevancia:</strong> Es el pilar de la accesibilidad, cubriendo temas como la no discriminación (accesibilidad digital), empleo y trabajo digno para la creación de la plataforma.</p>
-                </div>
+                </article>
+                
+                <article class="forum-thread-card inactive" aria-labelledby="thread-4-title">
+                    <div class="thread-info">
+                        <h4 id="thread-4-title"><a href="#">Dudas sobre el uso de tipografía Open-Dyslexic</a></h4>
+                        <p class="thread-meta">Iniciado por: Docente Ana | Última actividad: hace 3 semanas</p>
+                        <p class="thread-summary">Preguntas frecuentes sobre la aplicación de fuentes amigables con la dislexia en documentos externos.</p>
+                    </div>
+                    <div class="thread-stats">
+                        <span class="stat-count">3</span> Respuestas
+                        <span class="stat-count">55</span> Vistas
+                    </div>
+                </article>
+                
             </div>
             
-            <div id="panel-ods" class="tab-panel" role="tabpanel" tabindex="0" hidden>
-                <div class="ods-list">
-                    <h4>4 ODS Clave para EducaTech Inclusiva</h4>
-                    <ul>
-                        <li><span class="ods-number">ODS 4:</span> Educación de Calidad (Garantizamos el acceso inclusivo y equitativo).</li>
-                        <li><span class="ods-number">ODS 8:</span> Trabajo Decente y Crecimiento Económico (Promovemos la inclusión laboral a través de la formación adaptada).</li>
-                        <li><span class="ods-number">ODS 12:</span> Producción y Consumo Responsable (El eje temático de nuestros cursos de Economía Circular).</li>
-                        <li><span class="ods-number">ODS 17:</span> Alianzas para lograr los Objetivos (Trabajamos en conjunto con estándares globales como WCAG, ISO y GRI).</li>
-                    </ul>
-                </div>
-            </div>
-
+            <nav class="forum-pagination" aria-label="Paginación del Foro">
+                <a href="#" class="button-primary disabled">Anterior</a>
+                <a href="#" class="button-primary">1</a>
+                <a href="#" class="button-primary">2</a>
+                <a href="#" class="button-primary">Siguiente</a>
+            </nav>
         </section>
-
     </main>
 
     <footer role="contentinfo">
-        <p>© 2025 EducaTech Inclusiva S.A.C. | Centro de Estándares.</p>
+        <p>© 2025 EducaTech Inclusiva S.A.C. | Tecnología para una Educación sin Barreras.</p>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const tabs = document.querySelectorAll('.tab-button');
-            const panels = document.querySelectorAll('.tab-panel');
-
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    // Desactivar todos
-                    tabs.forEach(t => {
-                        t.classList.remove('active');
-                        t.setAttribute('aria-selected', 'false');
-                    });
-                    panels.forEach(p => {
-                        p.classList.remove('active');
-                        p.setAttribute('hidden', 'true');
-                    });
-
-                    // Activar el seleccionado
-                    const targetPanelId = tab.getAttribute('aria-controls');
-                    const targetPanel = document.getElementById(targetPanelId);
-
-                    tab.classList.add('active');
-                    tab.setAttribute('aria-selected', 'true');
-                    targetPanel.classList.add('active');
-                    targetPanel.removeAttribute('hidden');
-                    targetPanel.focus(); // Mover el foco al panel
-                });
-            });
-        });
-    </script>
     <script src="../assets/js/script.js"></script>
 </body>
 </html>
