@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio | EducaTech Inclusiva: Educación sin Barreras</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/accessibility.css"> 
+</head>
+<body>
+    <aside id="accessibility-widget" role="complementary" aria-label="Opciones de Accesibilidad">
+        <button id="contrast-toggle" aria-label="Alternar Modo de Alto Contraste">Contraste 🌓</button>
+        <button id="font-toggle" aria-label="Aumentar Tamaño de Fuente">A+ 🔠</button>
+        <button id="reader-toggle" aria-label="Activar Lector de Pantalla (TTS)">Lector 🔊</button>
+    </aside>
+
+    <header role="banner">
+        <a href="index.html" aria-label="Inicio EducaTech Inclusiva">
+            <img src="assets/img/logo.png" alt="Logo EducaTech Inclusiva" class="logo">
+        </a>
+        <nav role="navigation" aria-label="Menú Principal">
+            <ul>
+                <li><a href="index.html" aria-current="page">Inicio</a></li>
+                <li><a href="docs/standards.html">Nuestro Compromiso (ISO/ODS)</a></li> 
+                <li id="nav-dashboard-link"><a href="pages/login-student-classic.html">Mi Dashboard Alumno</a></li> 
+                <li id="nav-login-link"><a href="pages/login.html">Acceso Adaptado</a></li>
+                <li><a href="pages/forums.html">Foro de Discusión</a></li> 
+                <li id="nav-logout-link" style="display:none;"><a href="#" id="logout-button">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main role="main">
+        <section class="hero-section hero-home" aria-labelledby="main-heading">
+            <h1 id="main-heading">Educación sin Barreras: Inclusión y Sostenibilidad Digital.</h1>
+            <p class="hero-subtitle">La única plataforma diseñada desde cero bajo estándares WCAG y alineada con la ISO 14001. Aprendizaje adaptado, responsable y de calidad.</p>
+            <div class="access-buttons">
+                <a href="pages/login.html" class="button-primary button-accent" role="button">🚀 Inicia Tu Experiencia Adaptada</a>
+                <a href="docs/standards.html" class="button-primary button-secondary" role="button">📚 Ver Estándares y Compromiso</a>
+            </div>
+        </section>
+
+        <section class="section-container core-needs-section" aria-labelledby="needs-heading">
+            <h2 id="needs-heading" class="section-heading" style="color: var(--primary-color);">Tecnología Adaptada a Cada Necesidad</h2>
+            <p>Atendemos las necesidades de estudiantes con discapacidad visual, auditiva, cognitiva y motriz, fortaleciendo la igualdad de oportunidades.</p>
+            <div class="core-needs-grid">
+                <div class="need-card">
+                    <span class="need-icon">👁️‍🗨️</span>
+                    <h4>Discapacidad Visual</h4>
+                    <p>Lectores de pantalla, narraciones y alto contraste dinámico.</p>
+                </div>
+                <div class="need-card">
+                    <span class="need-icon">🧠</span>
+                    <h4>Discapacidad Cognitiva</h4>
+                    <p>Modo lector con pictogramas y lenguaje simplificado.</p>
+                </div>
+                <div class="need-card">
+                    <span class="need-icon">🧑‍🦼</span>
+                    <h4>Discapacidad Motriz</h4>
+                    <p>Control total por teclado (WCAG 2.1) y compatibilidad con comandos de voz.</p>
+                </div>
+                <div class="need-card">
+                    <span class="need-icon">👂</span>
+                    <h4>Discapacidad Auditiva</h4>
+                    <p>Subtítulos automáticos y transcripciones completas de videos.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section-container" aria-labelledby="quick-access-heading">
+            <h2 id="quick-access-heading" class="section-heading">Acceso Rápido</h2>
+            <div class="access-grid-small">
+                 <a href="pages/login-student-classic.html" class="button-primary" role="button">Acceso Alumnos</a> 
+                 <a href="pages/login-teacher.html" class="button-primary button-accent" role="button">Acceso Docentes</a> 
+                 <a href="pages/forums.html" class="button-primary button-secondary" role="button">Explorar el Foro</a>
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <p>© 2025 EducaTech Inclusiva S.A.C. | Tecnología para una Educación sin Barreras.</p>
+    </footer>
+
+    <script src="assets/js/script.js"></script> 
+</body>
+</html>
