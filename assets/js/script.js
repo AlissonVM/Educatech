@@ -1,13 +1,16 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Variables principales
+/**
+ * Lógica de Accesibilidad y Persistencia de Sesión
+ * Controla la activación condicional de la accesibilidad y la redirección.
+ */
+(function() {
     const root = document.documentElement;
     const body = document.body;
     const contrastToggle = document.getElementById('contrast-toggle');
     const fontToggle = document.getElementById('font-toggle');
     const readerToggle = document.getElementById('reader-toggle');
-
-    // Estado de accesibilidad
-    let currentFontSize = 100;
+    
+    // Configuración Inicial y Persistencia
+    let currentFontSize = 100; // Almacenado como porcentaje
     let ttsActive = false;
     
     // Elementos de menú
@@ -17,10 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoutLinkLi = document.getElementById('nav-logout-link');
     const logoutButton = document.getElementById('logout-button');
 
-    // --- FUNCIONES DE ACCESIBILIDAD Y ESTADO ---
+    // --- 1. Funciones Centrales de Accesibilidad ---
+
     function speakText(text) {
         if (!ttsActive || !window.speechSynthesis) return;
-        if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
+        
+        if (window.speechSynthesis.speaking) {
+            window.speechSynthesis.cancel();
+        }
+
         const speech = new SpeechSynthesisUtterance(text);
         speech.lang = 'es-ES'; 
         window.speechSynthesis.speak(speech);
@@ -28,31 +36,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function setupTTSListeners() {
         const interactives = document.querySelectorAll('a:not(.disabled), button:not(.disabled), [role="button"], input[type="submit"]');
+
         interactives.forEach(element => {
             element.addEventListener('focus', function() {
                 let textToSpeak = element.getAttribute('aria-label') || element.textContent;
+                
+                const describedById = element.getAttribute('aria-describedby');
+                if (describedById) {
+                    const describedByElement = document.getElementById(describedById);
+                    if (describedByElement) {
+                        textToSpeak += `. Información adicional: ${describedByElement.textContent}`;
+                    }
+                }
+
                 speakText(textToSpeak.trim());
             });
             element.addEventListener('blur', function() {
-                if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
+                if (window.speechSynthesis.speaking) {
+                    window.speechSynthesis.cancel();
+                }
             });
         });
     }
 
     function loadAccessibilityState() {
         // Cargar estado persistente (si existe)
-        if (localStorage.getItem('contrastMode') === 'active') body.classList.add('high-contrast');
+        if (localStorage.getItem('contrastMode') === 'active') {
+            body.classList.add('high-contrast');
+        }
+
         if (localStorage.getItem('fontSize')) {
             currentFontSize = parseInt(localStorage.getItem('fontSize'));
             root.style.fontSize = currentFontSize + '%';
         }
+
         if (localStorage.getItem('ttsActive') === 'true') {
             ttsActive = true;
             if (readerToggle) readerToggle.textContent = 'Lector 🔇';
             setupTTSListeners();
         }
         
-        // Lógica de Bienvenida en Dashboard
+        // --- Lógica de Bienvenida en Dashboard ---
         const welcomeMessage = document.getElementById('welcome-banner');
         if (welcomeMessage && localStorage.getItem('showWelcome') === 'true') {
             setTimeout(() => {
@@ -62,8 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.removeItem('showWelcome');
         }
     }
+
+
+    // --- 2. Escuchadores de Eventos del Widget ---
     
-    // --- EVENTOS DEL WIDGET ---
     if (contrastToggle) {
         contrastToggle.addEventListener('click', () => {
             body.classList.toggle('high-contrast');
@@ -73,8 +99,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (fontToggle) {
         fontToggle.addEventListener('click', () => {
-            if (currentFontSize === 150) currentFontSize = 100;
-            else currentFontSize += 10;
+            if (currentFontSize === 150) {
+                currentFontSize = 100;
+            } else {
+                currentFontSize += 10;
+            }
             root.style.fontSize = currentFontSize + '%';
             localStorage.setItem('fontSize', currentFontSize);
         });
@@ -92,15 +121,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 setupTTSListeners();
             } else {
                 readerToggle.textContent = 'Lector 🔊';
-                if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
+                if (window.speechSynthesis.speaking) {
+                    window.speechSynthesis.cancel();
+                }
             }
         });
     }
 
+    // --- 3. Lógica de Login Adaptado y Menú Dinámico ---
 
-    // --- LÓGICA DE LOGIN Y MENÚ DINÁMICO (CRÍTICO) ---
-    
-    // 1. Configuración del menú al cargar la página
+    // Función de logout
+    if (logoutButton) {
+        logoutButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem('userProfile');
+            localStorage.setItem('contrastMode', 'inactive'); 
+            localStorage.setItem('fontSize', 100);
+            localStorage.setItem('ttsActive', 'false');
+            localStorage.removeItem('showWelcome');
+            // Redirigir al inicio 
+            const path = window.location.pathname;
+            const target = path.includes('/pages/') || path.includes('/docs/') || path.includes('/classes/') ? '../index.html' : 'index.html';
+            window.location.href = target; 
+        });
+    }
+
+    // Lógica del menú dinámico (omitiendo por brevedad, se mantiene el código anterior)
     if (userProfile) {
         if (loginLinkLi) loginLinkLi.style.display = 'none';
         if (logoutLinkLi) logoutLinkLi.style.display = 'list-item';
@@ -112,8 +158,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const aTag = dashboardLinkLi.querySelector('a');
             if(aTag) { 
                 aTag.textContent = dashboardText;
-                
-                // Asegurar que el href sea correcto desde cualquier ruta
                 const path = window.location.pathname;
                 const prefix = (path.includes('/pages/') || path.includes('/docs/')) ? '' : 'pages/';
                 aTag.href = prefix + dashboardFile;
@@ -121,57 +165,62 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     } else {
         if (logoutLinkLi) logoutLinkLi.style.display = 'none';
-        // Asegurar que el link de Dashboard Alumno apunte a su login
-        if (dashboardLinkLi) {
-            const aTag = dashboardLinkLi.querySelector('a');
-            if(aTag) aTag.href = (window.location.pathname.includes('/pages/') || window.location.pathname.includes('/docs/')) ? 'login-student-classic.html' : 'pages/login-student-classic.html'; 
-        }
-    }
-    
-    // 2. Función Logout
-    if (logoutButton) {
-        logoutButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            localStorage.removeItem('userProfile');
-            localStorage.setItem('contrastMode', 'inactive'); // Limpiar estado adaptado
-            localStorage.setItem('fontSize', 100);
-            localStorage.removeItem('showWelcome');
-            // Redirigir al inicio 
-            const path = window.location.pathname;
-            const target = path.includes('/pages/') || path.includes('/docs/') || path.includes('/classes/') ? '../index.html' : 'index.html';
-            window.location.href = target; 
-        });
     }
 
-
-    // --- LÓGICA DE ACCESO ADAPTADO (pages/login.html) ---
+    // Lógica de Acceso Adaptado (pages/login.html)
     const profileSelector = document.querySelector('.profile-selector');
     if (profileSelector) {
         profileSelector.querySelectorAll('button').forEach(button => {
             button.addEventListener('click', () => {
                 const profile = button.getAttribute('data-profile');
                 
-                // Lógica de Adaptación Inicial (Activación Condicional)
-                if (profile.includes('Visual')) {
+                // RESTABLECER PRIMERO
+                localStorage.setItem('contrastMode', 'inactive');
+                localStorage.setItem('fontSize', 100);
+                localStorage.setItem('ttsActive', 'false');
+                root.style.fontSize = '100%';
+                body.classList.remove('high-contrast');
+                
+                // ACTIVACIÓN CONDICIONAL DE SIMULACIÓN VISUAL
+                if (profile === "student-visual") {
                     localStorage.setItem('contrastMode', 'active');
                     localStorage.setItem('fontSize', 120);
                     localStorage.setItem('ttsActive', 'true');
-                } else {
-                    localStorage.setItem('contrastMode', 'inactive');
-                    localStorage.setItem('fontSize', 100);
-                    localStorage.setItem('ttsActive', 'false');
                 }
                 
-                localStorage.setItem('userProfile', profile);
+                // Redirigir al perfil correcto
+                localStorage.setItem('userProfile', profile.includes('teacher') ? 'teacher' : 'student');
                 localStorage.setItem('showWelcome', 'true');
                 
-                // Redirección Final (Ruta simple, ya que está en la misma carpeta pages/)
-                window.location.href = 'dashboard.html'; 
+                const targetDashboard = profile.includes('teacher') ? 'dashboard-teacher.html' : 'dashboard.html';
+                window.location.href = targetDashboard; // Redirección final
             });
         });
     }
 
-    // Cargar el estado al iniciar
+
+    // Lógica de Login Clásico (Alumno/Docente)
+    const studentLoginForm = document.getElementById('student-login-form');
+    if (studentLoginForm) {
+        studentLoginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            localStorage.setItem('userProfile', 'student');
+            localStorage.setItem('showWelcome', 'true');
+            window.location.href = 'dashboard.html'; 
+        });
+    }
+
+    const teacherLoginForm = document.getElementById('teacher-login-form');
+    if (teacherLoginForm) {
+        teacherLoginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            localStorage.setItem('userProfile', 'teacher');
+            localStorage.setItem('showWelcome', 'true');
+            window.location.href = 'dashboard-teacher.html';
+        });
+    }
+
+    // Cargar el estado al iniciar la página (Dashboard, Class, etc.)
     loadAccessibilityState();
 
 })();
