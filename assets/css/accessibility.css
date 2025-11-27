@@ -89,3 +89,9 @@ body.reader-active .learning-resource h3::before {
     margin-right: 8px;
     font-weight: bold;
 }
+
+body.reader-active .transcript-content p {
+    font-family: inherit; 
+    font-size: 1em;
+    font-weight: 500;
+}
